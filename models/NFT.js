@@ -1,31 +1,33 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/database');
 
-const userInfo = sequelize.define('user', {
-    username: {
-        type: DataTypes.STRING(50),
+const NFT = sequelize.define('NFT', {
+    id: {
+        type: DataTypes.BIGINT,
         primaryKey: true,
+        autoIncrement: false,
+        unique: true
+    },
+    name: {
+        type: DataTypes.STRING(100),
+        primaryKey: false,
+        allowNull: false,
+        unique: false
+    },
+    description: {
+        type: DataTypes.STRING(100),
+        primaryKey: false,
+        allowNull: false,
+        unique: false
+    },
+    imageURL: {
+        type: DataTypes.STRING(100),
+        primaryKey: false,
         allowNull: false,
         unique: true
     },
-    phoneNumber: {
-        type: DataTypes.INTEGER,
-        primaryKey: false,
-        allowNull: false,
-    },
-    fullName: {
-        type: DataTypes.STRING(100),
-        primaryKey: false,
-        allowNull: false,
-    },
-    nationality: {
-        type: DataTypes.STRING(100),
-        primaryKey: false,
-        allowNull: false,
-    }
 }, {
-    tableName: "userInfo",
-    timestamps: true
+    tableName: "info",
 });
 
-module.exports = userInfo;
+module.exports = NFT;
